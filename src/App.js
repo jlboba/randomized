@@ -2,13 +2,14 @@
 // DEPENDENCIES
 // ==============================
 import React, { Component } from 'react'
+import {BrowserRouter as  Router, Route } from 'react-router-dom'
 import axios from 'axios'
 
 // ==============================
 // IMPORTED COMPONENTS
 // ==============================
 import Header from './Header'
-import CohortCard from './CohortCard'
+import Home from './home/Home'
 
 // ==============================
 // APP COMPONENT
@@ -42,19 +43,15 @@ class App extends Component {
   // RENDER
   render() {
     return (
-      <div>
-        <Header />
-        <div className="cohorts-container">
-        {this.state.cohorts.map((cohort, index) =>
-          <CohortCard
-            id={cohort.cohort_id}
-            name={cohort.cohort_name}
-            students={cohort.students}
-            key={index}
+      <Router>
+        <div>
+          <Header />
+          <Route
+            exact path='/'
+            render={props => <Home cohorts={this.state.cohorts} />}
           />
-        )}
         </div>
-      </div>
+      </Router>
     )
   }
 }
