@@ -45,7 +45,6 @@ class Cohort extends Component {
   render() {
     return (
       <div>
-        { this.state.name }
         { this.state.cohortWasFetched ?
           <Roster students={this.state.students}/> :''
         }

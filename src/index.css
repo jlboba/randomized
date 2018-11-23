@@ -5,6 +5,7 @@
   --pink: rgb(238,174,202);
   --blue: rgb(148,187,233);
   --purple: rgb(191, 179, 215);
+  --gradient: linear-gradient(to left, var(--pink) 0%, var(--blue) 100%);
 }
 
 /* =================
@@ -27,7 +28,7 @@ header {
   width: 100%;
   border-width: 5px;
   border-style: solid;
-  border-image: linear-gradient(to left, var(--pink) 0%, var(--blue) 100%);
+  border-image: var(--gradient);
   border-image-slice: 1;
   border-left: 0px;
   border-right: 0px;
@@ -41,9 +42,22 @@ header {
   justify-content: space-between;
 }
 .header-title {
-  color: #444;
   font-size: 1.5em;
   text-transform: uppercase;
+}
+.header-title a {
+  color: #444;
+}
+.header-title a:after {
+  content: '';
+  display: block;
+  height: 3px;
+  background: var(--gradient);
+  width: 0%;
+}
+.header-title a:hover:after {
+  width: 100%;
+  transition: 0.7s ease-in-out;
 }
 .header-navigation ul {
   list-style-type: none;
@@ -67,8 +81,8 @@ header {
 .header-navigation a:after {
   content:'';
   display: block;
-  background: var(--blue);
-  height: 2px;
+  background: var(--gradient);
+  height: 3px;
   position: relative;
   top: 2.3em;
   opacity: 0;
