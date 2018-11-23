@@ -19,7 +19,17 @@ class App extends Component {
 
   // STATE
   state = {
-    cohorts: []
+    cohorts: [],
+    currentCohort: ''
+  }
+
+  // HANDLER METHODS
+  handleCurrentCohort = (cohortName) => {
+    this.setState(prevState => {
+      return {
+        currentCohort: cohortName
+      }
+    })
   }
 
   // AXIOS CALLS
@@ -47,11 +57,11 @@ class App extends Component {
       <Router>
         <div>
           {/* HEADER */}
-          <Header />
+          <Header currentCohort={this.state.currentCohort}/>
           {/* HOME ROUTE */}
           <Route
             exact path='/'
-            render={props => <Home cohorts={this.state.cohorts} />}
+            render={props => <Home cohorts={this.state.cohorts} handleCurrentCohort={this.handleCurrentCohort} />}
           />
           {/* SINGLE COHORT VIEW */}
           <Route

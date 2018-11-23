@@ -43,6 +43,7 @@ header {
 .header-title {
   color: #444;
   font-size: 1.5em;
+  text-transform: uppercase;
 }
 .header-navigation ul {
   list-style-type: none;
