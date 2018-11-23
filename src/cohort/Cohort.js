@@ -8,6 +8,7 @@ import axios from 'axios'
 // IMPORTED COMPONENTS
 // ==============================
 import Roster from './components/Roster'
+import Workspace from './components/Workspace'
 
 // ==============================
 // COHORT COMPONENT
@@ -44,9 +45,12 @@ class Cohort extends Component {
   // RENDER
   render() {
     return (
-      <div className="cohort-container">
+      <div>
         { this.state.cohortWasFetched ?
-          <Roster students={this.state.students}/> :''
+          <div className="cohort-container">
+            <Roster students={this.state.students}/>
+            <Workspace />
+          </div> :''
         }
       </div>
     )

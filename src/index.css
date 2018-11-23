@@ -214,3 +214,40 @@ header {
   background: var(--pink);
   box-shadow: 1px 1px #eee;
 }
+.workspace-container {
+  width: 68%;
+  min-height: 500px;
+  padding: 10px;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 1px 1px #eee;
+  box-sizing: border-box;
+}
+.workspace-navigation ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.workspace-navigation li {
+  display: inline-block;
+  width: 25%;
+  padding: 10px;
+  box-sizing: border-box;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.7em;
+  font-family: 'Do Hyeon';
+  color: #888;
+  border-bottom: 1px solid #eee;
+  transition: 0.3s ease-in-out;
+}
+.workspace-navigation li span {
+  display: inline-block;
+  float: left;
+  margin-top: 1px;
+  color: rgb(205, 131, 164);
+}
+.workspace-navigation li:hover {
+  cursor: pointer;
+  border-bottom: 1px solid var(--blue);
+}
