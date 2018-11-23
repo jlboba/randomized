@@ -4,6 +4,7 @@
 :root {
   --pink: rgb(238,174,202);
   --blue: rgb(148,187,233);
+  --purple: rgb(191, 179, 215);
 }
 
 /* =================
@@ -17,6 +18,7 @@ body {
 a {
   text-decoration: none;
 }
+
 /* =================
 / HEADER
 ================= */
@@ -79,4 +81,52 @@ header {
   letter-spacing: 2px;
   font-weight: 400;
   transition: 0.3s ease-in-out;
+}
+
+/* =================
+/ HOME PAGE
+================= */
+.cohorts-container {
+  width: 95%;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 2em auto;
+}
+.cohort-card {
+  width: 31%;
+  height: 4em;
+  padding: 10px;
+  margin: 0 10px 20px 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  box-shadow: 2px 2px white;
+  color: white;
+}
+.cohort-card:nth-of-type(odd) {
+  background: var(--purple);
+}
+.cohort-card:nth-of-type(even) {
+  background: var(--blue);
+}
+.cohort-card:hover {
+  cursor: pointer;
+  box-shadow: 2px 2px #ccc;
+  background: var(--pink);
+}
+.cohort-card h1 {
+  margin: 0;
+  font-family: 'Do Hyeon';
+  font-size: 1.2em;
+  text-transform: uppercase;
+  text-shadow: 1px 1px #aaa;
+  letter-spacing: 2px;
+}
+.cohort-student-count {
+  text-align: right;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-family: 'Overpass';
+  font-size: 0.6em;
+  position: relative;
+  top: 10px;
 }
