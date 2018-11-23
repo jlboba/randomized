@@ -1,0 +1,82 @@
+/* =================
+/ VARIABLES
+================= */
+:root {
+  --pink: rgb(238,174,202);
+  --blue: rgb(148,187,233);
+}
+
+/* =================
+/ GENERAL
+================= */
+body {
+  background: #f9f9f9;
+  margin: 0;
+  padding: 0;
+}
+a {
+  text-decoration: none;
+}
+/* =================
+/ HEADER
+================= */
+header {
+  width: 100%;
+  border-width: 5px;
+  border-style: solid;
+  border-image: linear-gradient(to left, var(--pink) 0%, var(--blue) 100%);
+  border-image-slice: 1;
+  border-left: 0px;
+  border-right: 0px;
+  border-bottom: 0px;
+  font-family: 'Do Hyeon';
+}
+.header-container {
+  padding: 1.5em;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+}
+.header-title {
+  color: #444;
+  font-size: 1.5em;
+}
+.header-navigation ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.header-navigation li {
+  display: inline-block;
+  margin: 5px 10px;
+  font-size: 0.8em;
+  font-family: 'Overpass';
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.header-navigation a {
+  color: #444;
+  height: 100%;
+  transition: 0.3s ease-in-out;
+}
+.header-navigation a:after {
+  content:'';
+  display: block;
+  background: var(--blue);
+  height: 2px;
+  position: relative;
+  top: 2.3em;
+  opacity: 0;
+  transition: 0.3s ease-in-out;
+}
+.header-navigation a:hover:after {
+  opacity: 1;
+  transition: 0.3s ease-in-out;
+}
+.header-navigation a:hover {
+  color: var(--pink);
+  letter-spacing: 2px;
+  font-weight: 400;
+  transition: 0.3s ease-in-out;
+}
