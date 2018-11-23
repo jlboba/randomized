@@ -10,6 +10,7 @@ import axios from 'axios'
 // ==============================
 import Header from './Header'
 import Home from './home/Home'
+import Cohort from './cohort/Cohort'
 
 // ==============================
 // APP COMPONENT
@@ -45,10 +46,17 @@ class App extends Component {
     return (
       <Router>
         <div>
+          {/* HEADER */}
           <Header />
+          {/* HOME ROUTE */}
           <Route
             exact path='/'
             render={props => <Home cohorts={this.state.cohorts} />}
+          />
+          {/* SINGLE COHORT VIEW */}
+          <Route
+            path='/cohort/:id'
+            component={Cohort}
           />
         </div>
       </Router>
