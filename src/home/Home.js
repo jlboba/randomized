@@ -14,7 +14,6 @@ import CohortCard from './components/CohortCard'
 class Home extends Component {
   // LIFE CYCLES
   componentDidMount() {
-    console.log('home component did mount');
     this.props.handleCurrentCohort('')
   }
 

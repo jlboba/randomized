@@ -8,11 +8,16 @@ import React from 'react'
 // ==============================
 const Roster = ({ students }) => {
   return (
-    <div>
-      {students.map((student, index) => {
-        console.log(student);
-        return <div key={index}>{student.name}</div>
-      })}
+    <div className="roster-container">
+      <h1>ROSTER</h1>
+      <h2>{students.length} STUDENTS</h2>
+      <div className="students-container">
+        {students.map((student, index) => {
+          return (
+            <div key={index} className="student">{student.name}</div>
+          )
+        })}
+      </div>
     </div>
   )
 }

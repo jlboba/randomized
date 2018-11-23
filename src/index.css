@@ -37,7 +37,7 @@ header {
 }
 .header-container {
   padding: 1.5em;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #eee;
   display: flex;
   justify-content: space-between;
 }
@@ -145,4 +145,72 @@ header {
   font-size: 0.6em;
   position: relative;
   top: 10px;
+}
+
+/* =================
+/ COHORT PAGE
+================= */
+.cohort-container {
+  width: 90%;
+  margin: 40px auto;
+  display: flex;
+  justify-content: space-between;
+}
+.roster-container {
+  width: 30%;
+  min-height: 500px;
+  padding: 10px;
+  border-radius: 8px;
+  background: white;
+  box-shadow: 1px 1px #eee;
+  box-sizing: border-box;
+}
+.roster-container h1 {
+  font-family: 'Do Hyeon';
+  font-size: 1.7em;
+  letter-spacing: 2px;
+  color: #666;
+  margin: 0;
+}
+.roster-container h2 {
+  font-family: 'Overpass';
+  font-size: 0.7em;
+  letter-spacing: 1.5px;
+  color: #999;
+  margin: 0;
+}
+.roster-container h2:after {
+  content: '';
+  display: block;
+  height: 2px;
+  width: 100%;
+  margin: 5px 0;
+  background: var(--gradient);
+}
+.students-container {
+  margin: 10px 0;
+}
+.student {
+  width: 90%;
+  margin: 5px auto;
+  padding: 5px;
+  text-align: center;
+  text-transform: uppercase;
+  font-family: 'Overpass';
+  font-weight: 300;
+  font-size: 0.7em;
+  color: white;
+  box-sizing: border-box;
+  border-radius: 6px;
+}
+.student:nth-of-type(odd) {
+  background: var(--purple)
+}
+.student:nth-of-type(even) {
+  background: var(--blue);
+}
+.student:hover {
+  cursor: pointer;
+  background: var(--pink);
+  box-shadow: 1px 1px #eee;
 }
