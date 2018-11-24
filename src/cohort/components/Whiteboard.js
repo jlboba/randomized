@@ -44,23 +44,7 @@ class Whiteboard extends Component {
     const { students, handleStudentState } = this.props
 
     return (
-      <div
-        className="whiteboard-container"
-      >
-        {students.map((student, id) => {
-          return (
-            <div key={id}>
-              {student.category === 'whiteboard' ?
-              <div
-                className="student"
-                onDragStart={(e) => this.onDragStart(e, student)}
-                draggable
-              >
-                {student.name}
-              </div> : null}
-            </div>
-          )
-        })}
+      <div className="whiteboard-container">
         <button onClick={() => {this.createCategory('test')}}>hi</button>
         {this.state.categories.map((category, id) => {
           return (

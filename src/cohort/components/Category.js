@@ -4,7 +4,7 @@
 import React, { Component } from 'react'
 
 // ==============================
-// LISTS COMPONENT
+// CATEGORY COMPONENT
 // ==============================
 class Category extends Component {
   // DRAG METHODS
