@@ -28,6 +28,7 @@ class Cohort extends Component {
   getCohort = () => {
     axios.get('https://randomized-api.herokuapp.com/cohorts/' + this.props.match.params.id)
       .then((foundCohort) => {
+        // if there's a found cohort, set the state
         if(foundCohort.data[0]) {
           this.setState(prevState => {
             return {
@@ -36,7 +37,7 @@ class Cohort extends Component {
               cohortWasFetched: true
             }
           })
-        } else {
+        } else { // if there isn't, set the state so that there's no cohort found
           this.setState(prevState => {
             return {
               noCohortFound: true
@@ -56,12 +57,14 @@ class Cohort extends Component {
   render() {
     return (
       <div>
+        {/* if a cohort was found, render the roster + workspace */}
         { this.state.cohortWasFetched ?
           <div className="cohort-container">
             <Roster students={this.state.students}/>
-            <Workspace />
+            <Workspace id={this.props.match.params.id}/>
           </div> : ''
         }
+        {/* if no cohort was found, render the 404 */}
         { this.state.noCohortFound ?
           <div>
             <NotFound />

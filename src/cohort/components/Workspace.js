@@ -2,13 +2,14 @@
 // DEPENDENCIES
 // ==============================
 import React, { Component } from 'react'
-import { Route } from 'react-router-dom'
-
+import { Route, withRouter } from 'react-router-dom'
 // ==============================
 // IMPORTED COMPONENTS
 // ==============================
 import AddStudent from './AddStudent'
-import { withRouter }  from 'react-router-dom'
+import Whiteboard from './Whiteboard'
+import Randomizer from './Randomizer'
+import Lists from './Lists'
 
 // ==============================
 // WORKSPACE COMPONENT
@@ -20,13 +21,34 @@ class Workspace extends Component {
   }
 
   // HANDLER METHODS
+  handleRedirect = (space) => {
+    switch (space) {
+      case 'add':
+        this.props.history.push('/cohort/' + this.props.id)
+        break
+      case 'whiteboard':
+        this.props.history.push('/cohort/' + this.props.id + '/whiteboard')
+        break
+      case 'randomizer':
+        this.props.history.push('/cohort/' + this.props.id + '/randomizer')
+        break
+      case 'lists':
+        this.props.history.push('/cohort/' + this.props.id + '/lists')
+        break
+      default:
+        break
+    }
+  }
+
   handleActiveSpace = (space) => {
-    this.props.history.push('test')
+    // set the active space state
     this.setState(prevState => {
       return {
         activeSpace: space
       }
     })
+    // call redirect method
+    this.handleRedirect(space)
   }
 
   // RENDER
@@ -43,10 +65,21 @@ class Workspace extends Component {
           </ul>
         </div>
         {/* ======== ADD STUDENT ======== */}
-
+        {this.state.activeSpace === 'add' ? <AddStudent /> : ''}
+        {/* ======== WHITEBOARD ======== */}
         <Route
-          path="/test"
-          component={AddStudent}
+          path="/cohort/:id/whiteboard"
+          component={Whiteboard}
+        />
+        {/* ======== RANDOMIZER ======== */}
+        <Route
+          path="/cohort/:id/randomizer"
+          component={Randomizer}
+        />
+        {/* ======== LISTS ======== */}
+        <Route
+          path="/cohort/:id/lists"
+          component={Lists}
         />
       </div>
     )
