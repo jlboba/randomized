@@ -20,7 +20,16 @@ a {
   text-decoration: none;
   width: 100%;
 }
-
+.error-status {
+  width: 90%;
+  margin: 20px auto;
+  text-align: center;
+  font-family: 'Do Hyeon';
+  font-size: 3em;
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
 /* =================
 / HEADER
 ================= */

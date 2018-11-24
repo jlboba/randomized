@@ -2,6 +2,13 @@
 // DEPENDENCIES
 // ==============================
 import React, { Component } from 'react'
+import { Route } from 'react-router-dom'
+
+// ==============================
+// IMPORTED COMPONENTS
+// ==============================
+import AddStudent from './AddStudent'
+import { withRouter }  from 'react-router-dom'
 
 // ==============================
 // WORKSPACE COMPONENT
@@ -14,19 +21,19 @@ class Workspace extends Component {
 
   // HANDLER METHODS
   handleActiveSpace = (space) => {
-    console.log('hi');
+    this.props.history.push('test')
     this.setState(prevState => {
       return {
         activeSpace: space
       }
     })
-    console.log(this.state);
   }
 
   // RENDER
   render() {
     return (
       <div className="workspace-container">
+        {/* ======== NAVIGATION ======== */}
         <div className="workspace-navigation">
           <ul>
             <li className={this.state.activeSpace === 'add' ? 'active-nav' : null} onClick={() => this.handleActiveSpace('add')}><span className="lnr lnr-user"></span> add student</li>
@@ -35,7 +42,12 @@ class Workspace extends Component {
             <li className={this.state.activeSpace === 'lists' ? 'active-nav' : null} onClick={() => this.handleActiveSpace('lists')}><span className="lnr lnr-list"></span> view all lists</li>
           </ul>
         </div>
-        when moon shine it's your time
+        {/* ======== ADD STUDENT ======== */}
+
+        <Route
+          path="/test"
+          component={AddStudent}
+        />
       </div>
     )
   }
@@ -44,4 +56,4 @@ class Workspace extends Component {
 // ==============================
 // EXPORT
 // ==============================
-export default Workspace
+export default withRouter(Workspace)
