@@ -17,6 +17,10 @@ class Category extends Component {
     this.props.handleStudentState(studentName, categoryName)
   }
 
+  onDragStart = (e, student) => {
+    e.dataTransfer.setData("name", student.name)
+  }
+
   // RENDER
   render() {
     const { name, students } = this.props
@@ -30,7 +34,13 @@ class Category extends Component {
           return (
             <div>
               {student.category === name ?
-                <div>{student.name}</div>
+                <div
+                  className="student"
+                  onDragStart={(e) => this.onDragStart(e, student)}
+                  draggable
+                >
+                  {student.name}
+                </div>
                 : null
               }
             </div>

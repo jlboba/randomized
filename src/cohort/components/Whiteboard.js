@@ -30,11 +30,6 @@ class Whiteboard extends Component {
     })
   }
 
-  // DRAG METHODS
-  onDragStart = (e, student) => {
-    e.dataTransfer.setData("name", student.name)
-  }
-
   // LIFE CYCLES
   componentDidMount() {
     this.props.getCohort()
