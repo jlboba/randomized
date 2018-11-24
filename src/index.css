@@ -198,6 +198,7 @@ header {
 }
 .students-container {
   margin: 10px 0;
+  min-height: 400px;
 }
 .student {
   width: 90%;

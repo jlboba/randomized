@@ -63,9 +63,11 @@ class Cohort extends Component {
       if(student.name === handledStudent) {
         if(category === 'roster') {
           student.inRoster = true
+          student.category = null
           updatedStudents.push(student)
         } else {
           student.inRoster = false
+          student.category = category
           updatedStudents.push(student)
         }
       } else {
@@ -91,8 +93,16 @@ class Cohort extends Component {
         {/* if a cohort was found, render the roster + workspace */}
         { this.state.cohortWasFetched ?
           <div className="cohort-container">
-            <Roster students={this.state.students} handleStudentState={this.handleStudentState}/>
-            <Workspace id={this.props.match.params.id} handleStudentState={this.handleStudentState} getCohort={this.getCohort}/>
+            <Roster
+              students={this.state.students}
+              handleStudentState={this.handleStudentState}
+            />
+            <Workspace
+              id={this.props.match.params.id}
+              students={this.state.students}
+              handleStudentState={this.handleStudentState}
+              getCohort={this.getCohort}
+            />
           </div> : ''
         }
         {/* if no cohort was found, render the 404 */}

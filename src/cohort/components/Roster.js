@@ -7,10 +7,19 @@ import React, { Component } from 'react'
 // ROSTER COMPONENT
 // ==============================
 class Roster extends Component {
-  // HANDLER METHODS
+  // DRAG METHODS
   // when dragging a student
   onDragStart = (e, student) => {
     e.dataTransfer.setData("name", student.name)
+  }
+
+  onDragOver = (e) => {
+    e.preventDefault()
+  }
+
+  onDrop = (e) => {
+    let studentName = e.dataTransfer.getData("name")
+    this.props.handleStudentState(studentName, "roster")
   }
 
   // RENDER
@@ -20,7 +29,11 @@ class Roster extends Component {
       <div className="roster-container">
         <h1>ROSTER</h1>
         <h2>{students.length} STUDENTS</h2>
-        <div className="students-container">
+        <div
+          className="students-container"
+          onDragOver={(e) => this.onDragOver(e)}
+          onDrop={(e) => this.onDrop(e)}
+        >
           {students.map((student, index) => {
             return (
               <div key={index}>

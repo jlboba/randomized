@@ -54,6 +54,8 @@ class Workspace extends Component {
 
   // RENDER
   render() {
+    const { id, getCohort,students, handleStudentState } = this.props
+
     return (
       <div className="workspace-container">
         {/* ======== NAVIGATION ======== */}
@@ -68,8 +70,8 @@ class Workspace extends Component {
         {/* ======== ADD STUDENT ======== */}
         {this.state.activeSpace === 'add' ?
           <AddStudent
-            getCohort={this.props.getCohort}
-            cohortId={this.props.id}
+            getCohort={getCohort}
+            cohortId={id}
           />
           : ''}
         {/* ======== WHITEBOARD ======== */}
@@ -77,8 +79,9 @@ class Workspace extends Component {
           path="/cohort/:id/whiteboard"
           render={props =>
             <Whiteboard
-              handleStudentState={this.props.handleStudentState}
-              getCohort={this.props.getCohort}
+              students={students}
+              handleStudentState={handleStudentState}
+              getCohort={getCohort}
             />
           }
         />
@@ -87,7 +90,7 @@ class Workspace extends Component {
           path="/cohort/:id/randomizer"
           render={props =>
             <Randomizer
-              getCohort={this.props.getCohort}
+              getCohort={getCohort}
             />
           }
         />
@@ -96,7 +99,7 @@ class Workspace extends Component {
           path="/cohort/:id/lists"
           render={props =>
             <Lists
-              getCohort={this.props.getCohort}
+              getCohort={getCohort}
             />
           }
         />

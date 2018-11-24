@@ -7,10 +7,6 @@ import React, { Component } from 'react'
 // ADD STUDENT COMPONENT
 // ==============================
 class Whiteboard extends Component {
-  // STATE
-  state = {
-    students: []
-  }
 
   // DRAG METHODS
   onDragOver = (e) => {
@@ -20,14 +16,10 @@ class Whiteboard extends Component {
   onDrop = (e) => {
     let studentName = e.dataTransfer.getData("name")
     this.props.handleStudentState(studentName, "whiteboard")
-    this.setState(prevState => {
-      return {
-        students: [
-          ...prevState.students,
-          studentName
-        ]
-      }
-    })
+  }
+
+  onDragStart = (e, student) => {
+    e.dataTransfer.setData("name", student.name)
   }
 
   // LIFE CYCLES
@@ -38,16 +30,25 @@ class Whiteboard extends Component {
 
   // RENDER
   render() {
+    const { students } = this.props
+
     return (
       <div
         className="whiteboard-container"
         onDragOver={(e) => this.onDragOver(e)}
         onDrop={(e) => this.onDrop(e)}
       >
-        {this.state.students.map((student, id) => {
+        {students.map((student, id) => {
           return (
-            <div key={id} className="student">
-              {student}
+            <div key={id}>
+              {student.category === 'whiteboard' ?
+              <div
+                className="student"
+                onDragStart={(e) => this.onDragStart(e, student)}
+                draggable
+              >
+                {student.name}
+              </div> : null}
             </div>
           )
         })}
