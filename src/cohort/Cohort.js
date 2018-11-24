@@ -30,10 +30,18 @@ class Cohort extends Component {
       .then((foundCohort) => {
         // if there's a found cohort, set the state
         if(foundCohort.data[0]) {
+          // add "inRoster" key to students first for drag & drop functionality
+          let newStudents = []
+          foundCohort.data[0].students.forEach((student) => {
+            student["inRoster"] = true
+            student["category"] = null
+            newStudents.push(student)
+          })
+          // set state
           this.setState(prevState => {
             return {
               name: foundCohort.data[0].cohort_name,
-              students: foundCohort.data[0].students,
+              students: newStudents,
               cohortWasFetched: true
             }
           })
@@ -48,6 +56,29 @@ class Cohort extends Component {
       .catch(err => console.log(err))
   }
 
+  // HANDLER METHODS
+  handleStudentState = (handledStudent, category) => {
+    let updatedStudents = []
+    this.state.students.forEach((student) => {
+      if(student.name === handledStudent) {
+        if(category === 'roster') {
+          student.inRoster = true
+          updatedStudents.push(student)
+        } else {
+          student.inRoster = false
+          updatedStudents.push(student)
+        }
+      } else {
+        updatedStudents.push(student)
+      }
+    })
+    this.setState(prevState => {
+      return {
+        students: updatedStudents
+      }
+    })
+  }
+
   // LIFE-CYCLES
   componentDidMount() {
     this.getCohort()
@@ -60,8 +91,8 @@ class Cohort extends Component {
         {/* if a cohort was found, render the roster + workspace */}
         { this.state.cohortWasFetched ?
           <div className="cohort-container">
-            <Roster students={this.state.students}/>
-            <Workspace id={this.props.match.params.id} getCohort={this.getCohort}/>
+            <Roster students={this.state.students} handleStudentState={this.handleStudentState}/>
+            <Workspace id={this.props.match.params.id} handleStudentState={this.handleStudentState} getCohort={this.getCohort}/>
           </div> : ''
         }
         {/* if no cohort was found, render the 404 */}

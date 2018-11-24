@@ -75,7 +75,9 @@ class Workspace extends Component {
         {/* ======== WHITEBOARD ======== */}
         <Route
           path="/cohort/:id/whiteboard"
-          component={Whiteboard}
+          render={props => <Whiteboard
+            handleStudentState={this.props.handleStudentState}
+          />}
         />
         {/* ======== RANDOMIZER ======== */}
         <Route

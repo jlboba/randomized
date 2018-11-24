@@ -211,12 +211,7 @@ header {
   color: white;
   box-sizing: border-box;
   border-radius: 6px;
-}
-.student:nth-of-type(odd) {
   background: var(--purple)
-}
-.student:nth-of-type(even) {
-  background: var(--blue);
 }
 .student:hover {
   cursor: pointer;
@@ -316,4 +311,17 @@ header {
   background: var(--gradient);
   box-shadow: 1px 1px #ccc;
   text-shadow: 1px 1px #ccc;
+}
+/* =================
+/ COHORT PAGE BOARD
+================= */
+.whiteboard-container {
+  width: 95%;
+  height: 390px;
+  padding: 10px;
+  margin: 20px auto 0 auto;
+  border: 1px solid transparent;
+  border-image: var(--gradient);
+  border-image-slice: 1;
+  border-width: 1px
 }
