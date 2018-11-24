@@ -18,12 +18,13 @@ class Whiteboard extends Component {
   }
 
   // HELPER METHODS
-  createCategory = (categoryName) => {
+  createCategory = (e) => {
+    e.preventDefault()
     this.setState(prevState => {
       return {
         categories: [
           ...prevState.categories,
-          categoryName
+          this.refs.categoryName.value
         ]
       }
     })
@@ -45,7 +46,12 @@ class Whiteboard extends Component {
 
     return (
       <div className="whiteboard-container">
-        <button onClick={() => {this.createCategory('test')}}>hi</button>
+        {/* ======== FORM TO ADD CATEGORY ======== */}
+        <form onSubmit={this.createCategory}>
+          <input type="text" ref="categoryName" placeholder="name"/>
+          <input type="submit"/>
+        </form>
+        {/* ======== CATEGORIES ======== */}
         {this.state.categories.map((category, id) => {
           return (
             <Category
