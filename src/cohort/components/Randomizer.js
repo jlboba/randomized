@@ -1,17 +1,25 @@
 // ==============================
 // DEPENDENCIES
 // ==============================
-import React from 'react'
+import React, { Component } from 'react'
 
 // ==============================
 // RANDOMIZER COMPONENT
 // ==============================
-const Randomizer = () => {
-  return (
-    <div>
-      randomizer will go here
-    </div>
-  )
+class Randomizer extends Component {
+  // LIFE CYCLES
+  componentDidMount() {
+    this.props.getCohort()
+  }
+
+  // RENDER
+  render() {
+    return (
+      <div>
+        randomizer will go here
+      </div>
+    )
+  }
 }
 
 // ==============================

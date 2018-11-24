@@ -75,19 +75,30 @@ class Workspace extends Component {
         {/* ======== WHITEBOARD ======== */}
         <Route
           path="/cohort/:id/whiteboard"
-          render={props => <Whiteboard
-            handleStudentState={this.props.handleStudentState}
-          />}
+          render={props =>
+            <Whiteboard
+              handleStudentState={this.props.handleStudentState}
+              getCohort={this.props.getCohort}
+            />
+          }
         />
         {/* ======== RANDOMIZER ======== */}
         <Route
           path="/cohort/:id/randomizer"
-          component={Randomizer}
+          render={props =>
+            <Randomizer
+              getCohort={this.props.getCohort}
+            />
+          }
         />
         {/* ======== LISTS ======== */}
         <Route
           path="/cohort/:id/lists"
-          component={Lists}
+          render={props =>
+            <Lists
+              getCohort={this.props.getCohort}
+            />
+          }
         />
       </div>
     )

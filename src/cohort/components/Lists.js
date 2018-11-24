@@ -1,17 +1,25 @@
 // ==============================
 // DEPENDENCIES
 // ==============================
-import React from 'react'
+import React, { Component } from 'react'
 
 // ==============================
 // LISTS COMPONENT
 // ==============================
-const Lists = () => {
-  return (
-    <div>
-      lists will go here
-    </div>
-  )
+class Lists extends Component {
+  // LIFE CYCLES
+  componentDidMount() {
+    this.props.getCohort()
+  }
+  
+  // RENDER
+  render() {
+    return (
+      <div>
+        lists will go here
+      </div>
+    )
+  }
 }
 
 // ==============================

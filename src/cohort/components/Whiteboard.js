@@ -30,7 +30,10 @@ class Whiteboard extends Component {
     })
   }
 
-  // HANDLER METHODS
+  // LIFE CYCLES
+  componentDidMount() {
+    this.props.getCohort()
+  }
 
 
   // RENDER

@@ -22,6 +22,11 @@ class AddStudent extends Component {
       .catch(err => console.log(err))
   }
 
+  // LIFE CYCLES
+  componentDidMount() {
+    this.props.getCohort()
+  }
+
   // RENDER
   render() {
     return (
