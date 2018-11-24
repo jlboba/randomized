@@ -4,20 +4,32 @@
 import React, { Component } from 'react'
 
 // ==============================
-// ADD STUDENT COMPONENT
+// IMPORTED COMPONENTS
+// ==============================
+import Category from './Category'
+
+// ==============================
+// WHITEBOARD COMPONENT
 // ==============================
 class Whiteboard extends Component {
+  // STATE
+  state = {
+    categories: []
+  }
+
+  // HELPER METHODS
+  createCategory = (categoryName) => {
+    this.setState(prevState => {
+      return {
+        categories: [
+          ...prevState.categories,
+          categoryName
+        ]
+      }
+    })
+  }
 
   // DRAG METHODS
-  onDragOver = (e) => {
-    e.preventDefault()
-  }
-
-  onDrop = (e) => {
-    let studentName = e.dataTransfer.getData("name")
-    this.props.handleStudentState(studentName, "whiteboard")
-  }
-
   onDragStart = (e, student) => {
     e.dataTransfer.setData("name", student.name)
   }
@@ -27,16 +39,13 @@ class Whiteboard extends Component {
     this.props.getCohort()
   }
 
-
   // RENDER
   render() {
-    const { students } = this.props
+    const { students, handleStudentState } = this.props
 
     return (
       <div
         className="whiteboard-container"
-        onDragOver={(e) => this.onDragOver(e)}
-        onDrop={(e) => this.onDrop(e)}
       >
         {students.map((student, id) => {
           return (
@@ -50,6 +59,17 @@ class Whiteboard extends Component {
                 {student.name}
               </div> : null}
             </div>
+          )
+        })}
+        <button onClick={() => {this.createCategory('test')}}>hi</button>
+        {this.state.categories.map((category, id) => {
+          return (
+            <Category
+              key={id}
+              name={category}
+              students={students}
+              handleStudentState={handleStudentState}
+            />
           )
         })}
       </div>

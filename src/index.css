@@ -326,3 +326,8 @@ header {
   border-image-slice: 1;
   border-width: 1px
 }
+.test-category {
+  width: 30%;
+  height: 150px;
+  border: 1px solid #eee;
+}
