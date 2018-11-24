@@ -3,6 +3,7 @@
 // ==============================
 import React, { Component } from 'react'
 import { Route, withRouter } from 'react-router-dom'
+
 // ==============================
 // IMPORTED COMPONENTS
 // ==============================
@@ -65,7 +66,12 @@ class Workspace extends Component {
           </ul>
         </div>
         {/* ======== ADD STUDENT ======== */}
-        {this.state.activeSpace === 'add' ? <AddStudent /> : ''}
+        {this.state.activeSpace === 'add' ?
+          <AddStudent
+            getCohort={this.props.getCohort}
+            cohortId={this.props.id}
+          />
+          : ''}
         {/* ======== WHITEBOARD ======== */}
         <Route
           path="/cohort/:id/whiteboard"

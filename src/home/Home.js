@@ -15,6 +15,7 @@ class Home extends Component {
   // LIFE CYCLES
   componentDidMount() {
     this.props.handleCurrentCohort('')
+    this.props.getCohorts()
   }
 
   // RENDER

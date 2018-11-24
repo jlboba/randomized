@@ -61,7 +61,11 @@ class App extends Component {
           {/* HOME ROUTE */}
           <Route
             exact path='/'
-            render={props => <Home cohorts={this.state.cohorts} handleCurrentCohort={this.handleCurrentCohort} />}
+            render={props => <Home
+              cohorts={this.state.cohorts}
+              getCohorts={this.getCohorts}
+              handleCurrentCohort={this.handleCurrentCohort}
+            />}
           />
           {/* SINGLE COHORT VIEW */}
           <Route

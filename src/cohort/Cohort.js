@@ -61,7 +61,7 @@ class Cohort extends Component {
         { this.state.cohortWasFetched ?
           <div className="cohort-container">
             <Roster students={this.state.students}/>
-            <Workspace id={this.props.match.params.id}/>
+            <Workspace id={this.props.match.params.id} getCohort={this.getCohort}/>
           </div> : ''
         }
         {/* if no cohort was found, render the 404 */}
