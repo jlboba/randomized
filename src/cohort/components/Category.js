@@ -26,13 +26,13 @@ class Category extends Component {
     const { name, students } = this.props
     return (
       <div
-        className={name + ' test-category'}
+        className={name + ' category'}
         onDragOver={(e) => this.onDragOver(e)}
         onDrop={(e) => this.onDrop(e, name)}
       >
         {students.map((student, id) => {
           return (
-            <div>
+            <div key={id}>
               {student.category === name ?
                 <div
                   className="student"

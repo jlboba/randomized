@@ -287,18 +287,18 @@ header {
   border: 1px solid #eee;
   border-radius: 6px;
 }
-.form-container input:focus {
+.form-container input:focus, .whiteboard-container input:focus {
   border: 1px solid var(--purple);
   outline: 0;
 }
-.form-container input::placeholder {
+.form-container input::placeholder, .whiteboard-container input::placeholder {
   font-family: 'Overpass';
   font-size: 0.9em;
   font-weight: 300;
   text-transform: uppercase;
   color: #999;
 }
-.form-container input[type="submit"] {
+.form-container input[type="submit"], .whiteboard-container input[type="submit"] {
   border: 0px;
   background: rgb(241, 189, 212);
   color: white;
@@ -307,7 +307,7 @@ header {
   text-transform: uppercase;
   letter-spacing: 4px;
 }
-.form-container input[type="submit"]:hover {
+.form-container input[type="submit"]:hover, .whiteboard-container input[type="submit"]:hover {
   cursor: pointer;
   background: var(--gradient);
   box-shadow: 1px 1px #ccc;
@@ -318,7 +318,7 @@ header {
 ================= */
 .whiteboard-container {
   width: 95%;
-  height: 390px;
+  min-height: 390px;
   padding: 10px;
   margin: 20px auto 0 auto;
   border: 1px solid transparent;
@@ -326,8 +326,36 @@ header {
   border-image-slice: 1;
   border-width: 1px
 }
-.test-category {
-  width: 30%;
-  height: 150px;
+.whiteboard-container form {
+  width: 100%;
+  margin: 10px 0;
+  text-align: center;
+}
+.whiteboard-container input {
+  width: 70%;
+  padding: 10px;
+  box-sizing: border-box;
   border: 1px solid #eee;
+  border-radius: 6px;
+}
+.whiteboard-container input[type="submit"] {
+  width: 25%;
+  margin-left: 5px;
+  font-size: 0.7em;
+  top: -1px;
+  position: relative;
+}
+.categories-container {
+  width: 96%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.category {
+  width: 30%;
+  min-height: 150px;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  margin-bottom: 20px;
 }
