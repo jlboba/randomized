@@ -30,6 +30,7 @@ class Category extends Component {
         onDragOver={(e) => this.onDragOver(e)}
         onDrop={(e) => this.onDrop(e, name)}
       >
+        <h1>{name}</h1>
         {students.map((student, id) => {
           return (
             <div key={id}>

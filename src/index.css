@@ -359,3 +359,12 @@ header {
   border-radius: 6px;
   margin-bottom: 20px;
 }
+.category h1 {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  color: rgb(127, 167, 214);
+  margin: 5px 0;
+  padding-bottom: 2px;
+  border-bottom: 1px solid #eee;
+}
