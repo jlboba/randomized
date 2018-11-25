@@ -18,19 +18,52 @@ class Whiteboard extends Component {
   }
 
   // HELPER METHODS
-  // TODO: ADD ERROR CHECKING FOR CREATECATEGORY
-    // if a cat name already exists
-    // if a cat name is not entered
-  createCategory = (e) => {
-    e.preventDefault()
+  checkIfCatEmpty = (categoryName) => {
+    if (categoryName === '') {
+      return 'undefined-' + this.state.categories.length
+    }
+    return categoryName
+  }
+
+  checkIfRepeatedCat = (categoryName) => {
+    let numberOfTimes = 0
+    this.state.categories.forEach((category) => {
+      let splitCategory = category.split('-')
+      if (splitCategory[0] === categoryName) {
+        numberOfTimes++
+      }
+    })
+    if (numberOfTimes > 0) {
+      numberOfTimes++
+      return categoryName = categoryName + '-' + numberOfTimes
+    }
+    return categoryName
+  }
+
+  updateCategoryState = (categoryName) => {
     this.setState(prevState => {
       return {
         categories: [
           ...prevState.categories,
-          this.refs.categoryName.value
+          categoryName
         ]
       }
     })
+  }
+
+  handleCategorySubmit = (e) => {
+    // prevent default form
+    e.preventDefault()
+    // save entered value to categoryName
+    let categoryName = this.refs.categoryName.value
+    // clear form ref
+    this.refs.categoryName.value = null
+    // check if user entered a category name
+    categoryName = this.checkIfCatEmpty(categoryName)
+    // check if user entered existing category name
+    categoryName = this.checkIfRepeatedCat(categoryName)
+    // finally, update the state with the new category
+    this.updateCategoryState(categoryName)
   }
 
   // LIFE CYCLES
@@ -45,7 +78,7 @@ class Whiteboard extends Component {
     return (
       <div className="whiteboard-container">
         {/* ======== FORM TO ADD CATEGORY ======== */}
-        <form onSubmit={this.createCategory}>
+        <form onSubmit={this.handleCategorySubmit}>
           <input type="text" ref="categoryName" placeholder="name"/>
           <input type="submit" value="add category"/>
         </form>
