@@ -44,6 +44,29 @@ class Whiteboard extends Component {
     return categoryName
   }
 
+  checkIfRepeatedList = (listName) => {
+    let numberOfTimes = 0
+    this.props.lists.forEach((list) => {
+      let splitList = list.list_name.split('-')
+      if (splitList[0] === listName) {
+        numberOfTimes++
+      }
+    })
+    if (numberOfTimes > 0) {
+      numberOfTimes++
+      return listName = listName + '-' + numberOfTimes
+    }
+    return listName
+  }
+
+  checkListName = (listName) => {
+    if(listName !== '') {
+      return this.checkIfRepeatedList(listName)
+    } else {
+      return 'untitled-' + this.props.lists.length
+    }
+  }
+
   updateCategoryState = (categoryName) => {
     this.setState(prevState => {
       return {
@@ -106,11 +129,13 @@ class Whiteboard extends Component {
         students.push(student)
       }
     })
+    // check for list name
+    let listName = this.checkListName(this.refs.listName.value)
     // if there are students,
     if(students.length > 0) {
       // create the list
       axios.post('https://randomized-api.herokuapp.com/lists', {
-        name: this.refs.listName.value,
+        name: listName,
         cohort_id: this.props.cohortId,
         students: students
       })

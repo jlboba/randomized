@@ -19,6 +19,7 @@ class Cohort extends Component {
   state = {
     name: '',
     students: [],
+    lists: [],
     cohortWasFetched: false,
     noCohortFound: false
   }
@@ -56,6 +57,21 @@ class Cohort extends Component {
       .catch(err => console.log(err))
   }
 
+  // get cohort list data
+  getCohortLists = () => {
+    axios.get('https://randomized-api.herokuapp.com/lists/cohort/' + this.props.match.params.id)
+      .then((foundLists) => {
+        if(foundLists.data[0]) {
+          this.setState(prevState => {
+            return {
+              lists: foundLists.data
+            }
+          })
+        }
+      })
+      .catch(err => console.log(err))
+  }
+
   // HANDLER METHODS
   handleStudentState = (handledStudent, category) => {
     let updatedStudents = []
@@ -84,6 +100,7 @@ class Cohort extends Component {
   // LIFE-CYCLES
   componentDidMount() {
     this.getCohort()
+    this.getCohortLists()
   }
 
   // RENDER
@@ -100,6 +117,7 @@ class Cohort extends Component {
             <Workspace
               id={this.props.match.params.id}
               students={this.state.students}
+              lists={this.state.lists}
               handleStudentState={this.handleStudentState}
               getCohort={this.getCohort}
             />

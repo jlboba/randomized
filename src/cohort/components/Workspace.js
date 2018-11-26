@@ -59,7 +59,7 @@ class Workspace extends Component {
 
   // RENDER
   render() {
-    const { id, getCohort,students, handleStudentState } = this.props
+    const { id, getCohort, students, lists, handleStudentState } = this.props
 
     return (
       <div className="workspace-container">
@@ -86,6 +86,7 @@ class Workspace extends Component {
             <Whiteboard
               cohortId={id}
               students={students}
+              lists={lists}
               handleStudentState={handleStudentState}
               handleActiveSpace={this.handleActiveSpace}
               getCohort={getCohort}
@@ -107,6 +108,7 @@ class Workspace extends Component {
           path="/cohort/:id/lists"
           render={props =>
             <Lists
+              lists={lists}
               getCohort={getCohort}
               handleActiveSpace={this.handleActiveSpace}
             />
