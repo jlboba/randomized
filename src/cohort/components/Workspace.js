@@ -79,6 +79,7 @@ class Workspace extends Component {
           path="/cohort/:id/whiteboard"
           render={props =>
             <Whiteboard
+              cohortId={id}
               students={students}
               handleStudentState={handleStudentState}
               getCohort={getCohort}

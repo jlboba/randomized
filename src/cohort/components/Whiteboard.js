@@ -2,6 +2,7 @@
 // DEPENDENCIES
 // ==============================
 import React, { Component } from 'react'
+import axios from 'axios'
 
 // ==============================
 // IMPORTED COMPONENTS
@@ -15,6 +16,7 @@ class Whiteboard extends Component {
   // STATE
   state = {
     showCreateList: false,
+    toggleButton: true,
     categories: []
   }
 
@@ -60,6 +62,22 @@ class Whiteboard extends Component {
     })
   }
 
+  wipeBoard = () => {
+    // reset all student state
+    this.props.students.forEach((student) => {
+      this.props.handleStudentState(student.name, 'roster')
+    })
+    // reset whiteboard
+    this.setState(prevState => {
+      return {
+        showCreateList: false,
+        toggleButton: true,
+        categories: []
+      }
+    })
+
+  }
+
   // SUBMIT METHODS
   handleCategorySubmit = (e) => {
     // prevent default form
@@ -77,8 +95,32 @@ class Whiteboard extends Component {
   }
 
   handleListSubmit = (e) => {
+    // prevent default form
     e.preventDefault()
-    console.log('nothing for now hi')
+    // default student array
+    let students = []
+    // get rid of students with no category
+    this.props.students.forEach((student) => {
+      if(student.category !== null) {
+        students.push(student)
+      }
+    })
+    // create the list
+    axios.post('https://randomized-api.herokuapp.com/lists', {
+      name: this.refs.listName.value,
+      cohort_id: this.props.cohortId,
+      students: students
+    })
+      .then((savedList) => {
+        this.refs.listName.value = null
+        this.setState(prevState => {
+          return {
+            showCreateList: false,
+            toggleButton: false
+          }
+        })
+      })
+      .catch(err => console.log(err))
   }
 
   // LIFE CYCLES
@@ -111,7 +153,10 @@ class Whiteboard extends Component {
           })}
         </div>
         {/* ======== BUTTON TO TOGGLE SAVING AS A LIST ======== */}
-        <button onClick={this.toggleCreateList}>SAVE AS LIST?</button>
+        {this.state.toggleButton ?
+          <button onClick={this.toggleCreateList}>SAVE AS LIST?</button> :
+          <button onClick={this.wipeBoard}>LIST SAVED! WIPE BOARD?</button>
+        }
         {/* ======== FORM TO SAVE AS LIST ======== */}
         {this.state.showCreateList ?
           <form onSubmit={this.handleListSubmit}>
