@@ -20,6 +20,11 @@ class AddCohort extends Component {
       .catch(err => console.log(err))
   }
 
+  // LIFE CYCLES
+  componentDidMount() {
+    this.props.handleCurrentCohort('')
+  }
+
   // RENDER
   render() {
     return (

@@ -70,7 +70,9 @@ class App extends Component {
           {/* ADD COHORT VIEW */}
           <Route
             exact path='/new/cohort'
-            component={AddCohort}
+            render={props => <AddCohort
+              handleCurrentCohort={this.handleCurrentCohort}
+            />}
           />
           {/* SINGLE COHORT VIEW */}
           <Route
