@@ -11,12 +11,12 @@ import axios from 'axios'
 import Header from './Header'
 import Home from './home/Home'
 import Cohort from './cohort/Cohort'
+import AddCohort from './singles/AddCohort'
 
 // ==============================
 // APP COMPONENT
 // ==============================
 class App extends Component {
-
   // STATE
   state = {
     cohorts: [],
@@ -66,6 +66,11 @@ class App extends Component {
               getCohorts={this.getCohorts}
               handleCurrentCohort={this.handleCurrentCohort}
             />}
+          />
+          {/* ADD COHORT VIEW */}
+          <Route
+            exact path='/new/cohort'
+            component={AddCohort}
           />
           {/* SINGLE COHORT VIEW */}
           <Route

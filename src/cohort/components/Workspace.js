@@ -25,7 +25,11 @@ class Workspace extends Component {
   handleRedirect = (space) => {
     switch (space) {
       case 'add':
-        this.state.activeSpace = 'add'
+        this.setState(prevState => {
+          return {
+            activeSpace: 'add'
+          }
+        })
         this.props.history.push('/cohort/' + this.props.id)
         break
       case 'whiteboard':

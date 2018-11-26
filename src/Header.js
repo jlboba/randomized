@@ -14,10 +14,8 @@ const Header = ({ currentCohort }) => {
         <div className="header-title"><Link to='/'>RANDOMIZED { currentCohort }</Link></div>
         <div className="header-navigation">
           <ul>
-            <li><a href="/">Link</a></li>
-            <li><a href="/">link</a></li>
-            <li><a href="/">link</a></li>
-            <li><a href="/">link</a></li>
+            <li><Link to='/'>SEE ALL COHORTS</Link></li>
+            <li><Link to='/new/cohort'>ADD A COHORT</Link></li>
           </ul>
         </div>
       </div>
