@@ -155,7 +155,6 @@ header {
   position: relative;
   top: 10px;
 }
-
 /* =================
 / COHORT PAGE GEN
 ================= */
@@ -279,7 +278,7 @@ header {
 .form-container form {
   margin: 10px 0;
 }
-.form-container input {
+.form-container input, .add-cohort-container input {
   width: 100%;
   margin: 5px 0;
   padding: 10px;
@@ -287,18 +286,18 @@ header {
   border: 1px solid #eee;
   border-radius: 6px;
 }
-.form-container input:focus, .whiteboard-container input:focus {
+.form-container input:focus, .whiteboard-container input:focus, .add-cohort-container input:focus {
   border: 1px solid var(--purple);
   outline: 0;
 }
-.form-container input::placeholder, .whiteboard-container input::placeholder {
+.form-container input::placeholder, .whiteboard-container input::placeholder, .add-cohort-container input::placeholder {
   font-family: 'Overpass';
   font-size: 0.9em;
   font-weight: 300;
   text-transform: uppercase;
   color: #999;
 }
-.form-container input[type="submit"], .whiteboard-container input[type="submit"], .whiteboard-container button {
+.form-container input[type="submit"], .whiteboard-container input[type="submit"], .whiteboard-container button, .add-cohort-container input[type="submit"] {
   border: 0px;
   background: rgb(241, 189, 212);
   color: white;
@@ -307,7 +306,7 @@ header {
   text-transform: uppercase;
   letter-spacing: 4px;
 }
-.form-container input[type="submit"]:hover, .whiteboard-container input[type="submit"]:hover, .whiteboard-container button {
+.form-container input[type="submit"]:hover, .whiteboard-container input[type="submit"]:hover, .whiteboard-container button, .add-cohort-container input[type="submit"]:hover {
   cursor: pointer;
   background: var(--gradient);
   box-shadow: 1px 1px #ccc;
@@ -383,4 +382,40 @@ header {
 }
 .whiteboard-container button:focus {
   outline: 0;
+}
+/* =================
+/ ADD NEW COHORT
+================= */
+.add-cohort-container {
+  margin: 20px auto;
+  text-align: center;
+}
+.add-cohort-container h1 {
+  width: 9em;
+  font-family: 'Do Hyeon';
+  letter-spacing: 1px;
+  color: #666;
+  margin: 10px auto;
+}
+.add-cohort-container h1:after {
+  content: '';
+  background: var(--gradient);
+  display: block;
+  height: 3px;
+}
+.add-cohort-container input {
+  width: 15em;
+  margin: 0px 5px;
+}
+.add-cohort-container input[type="submit"] {
+  width: 7em;
+  font-size: 0.7em;
+  top: -1px;
+  position: relative;
+}
+.add-cohort-error {
+  font-family: 'Overpass';
+  font-size: 0.7em;
+  color: var(--blue);
+  margin: 5px;
 }
