@@ -17,6 +17,7 @@ class Whiteboard extends Component {
   state = {
     showCreateList: false,
     toggleButton: true,
+    createListError: false,
     categories: []
   }
 
@@ -105,22 +106,32 @@ class Whiteboard extends Component {
         students.push(student)
       }
     })
-    // create the list
-    axios.post('https://randomized-api.herokuapp.com/lists', {
-      name: this.refs.listName.value,
-      cohort_id: this.props.cohortId,
-      students: students
-    })
-      .then((savedList) => {
-        this.refs.listName.value = null
-        this.setState(prevState => {
-          return {
-            showCreateList: false,
-            toggleButton: false
-          }
-        })
+    // if there are students,
+    if(students.length > 0) {
+      // create the list
+      axios.post('https://randomized-api.herokuapp.com/lists', {
+        name: this.refs.listName.value,
+        cohort_id: this.props.cohortId,
+        students: students
       })
-      .catch(err => console.log(err))
+        .then((savedList) => {
+          this.refs.listName.value = null
+          this.setState(prevState => {
+            return {
+              showCreateList: false,
+              toggleButton: false,
+              createListError: false,
+            }
+          })
+        })
+        .catch(err => console.log(err))
+    } else { // else let them know the list wasn't saved
+      this.setState(prevState => {
+        return {
+          createListError: true
+        }
+      })
+    }
   }
 
   // LIFE CYCLES
@@ -154,7 +165,9 @@ class Whiteboard extends Component {
         </div>
         {/* ======== BUTTON TO TOGGLE SAVING AS A LIST ======== */}
         {this.state.toggleButton ?
-          <button onClick={this.toggleCreateList}>SAVE AS LIST?</button> :
+          <button onClick={this.toggleCreateList}>
+            {this.state.createListError ? 'NO STUDENTS, LIST NOT CREATED! TRY AGAIN?' : 'SAVE AS LIST?'}
+          </button> :
           <button onClick={this.wipeBoard}>LIST SAVED! WIPE BOARD?</button>
         }
         {/* ======== FORM TO SAVE AS LIST ======== */}
