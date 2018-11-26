@@ -1,26 +1,36 @@
 // ==============================
 // DEPENDENCIES
 // ==============================
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { Component } from 'react'
+import { Link, NavLink } from 'react-router-dom'
 
 // ==============================
 // HEADER COMPONENT
 // ==============================
-const Header = ({ currentCohort }) => {
-  return (
-    <header>
-      <div className="header-container">
-        <div className="header-title"><Link to='/'>RANDOMIZED { currentCohort }</Link></div>
-        <div className="header-navigation">
-          <ul>
-            <li><Link to='/'>SEE ALL COHORTS</Link></li>
-            <li><Link to='/new/cohort'>ADD A COHORT</Link></li>
-          </ul>
+class Header extends Component {
+  // STATE
+  state = {
+    allActive: true,
+    addActive: false
+  }
+
+  // RENDER
+  render() {
+    const { currentCohort } = this.props
+    return (
+      <header>
+        <div className="header-container">
+          <div className="header-title"><Link to='/'>RANDOMIZED { currentCohort }</Link></div>
+          <div className="header-navigation">
+            <ul>
+              <li><NavLink exact to='/' activeClassName="active-header-link">SEE ALL COHORTS</NavLink></li>
+              <li><NavLink to='/new/cohort'  activeClassName="active-header-link">ADD A COHORT</NavLink></li>
+            </ul>
+          </div>
         </div>
-      </div>
-    </header>
-  )
+      </header>
+    )
+  }
 }
 
 // ==============================

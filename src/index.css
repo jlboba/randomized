@@ -97,17 +97,16 @@ header {
   opacity: 0;
   transition: 0.3s ease-in-out;
 }
-.header-navigation a:hover:after {
+.header-navigation a:hover:after, a.active-header-link:after {
   opacity: 1;
   transition: 0.3s ease-in-out;
 }
-.header-navigation a:hover {
+.header-navigation a:hover, a.active-header-link {
   color: var(--pink);
   letter-spacing: 2px;
   font-weight: 400;
   transition: 0.3s ease-in-out;
 }
-
 /* =================
 / HOME PAGE
 ================= */
