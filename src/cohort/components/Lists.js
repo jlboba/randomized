@@ -10,8 +10,9 @@ class Lists extends Component {
   // LIFE CYCLES
   componentDidMount() {
     this.props.getCohort()
+    this.props.handleActiveSpace('lists')    
   }
-  
+
   // RENDER
   render() {
     return (

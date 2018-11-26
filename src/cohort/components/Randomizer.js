@@ -10,6 +10,7 @@ class Randomizer extends Component {
   // LIFE CYCLES
   componentDidMount() {
     this.props.getCohort()
+    this.props.handleActiveSpace('randomizer')    
   }
 
   // RENDER

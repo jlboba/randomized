@@ -25,6 +25,7 @@ class Workspace extends Component {
   handleRedirect = (space) => {
     switch (space) {
       case 'add':
+        this.state.activeSpace = 'add'
         this.props.history.push('/cohort/' + this.props.id)
         break
       case 'whiteboard':
@@ -61,10 +62,10 @@ class Workspace extends Component {
         {/* ======== NAVIGATION ======== */}
         <div className="workspace-navigation">
           <ul>
-            <li className={this.state.activeSpace === 'add' ? 'active-nav' : null} onClick={() => this.handleActiveSpace('add')}><span className="lnr lnr-user"></span> add student</li>
-            <li className={this.state.activeSpace === 'whiteboard' ? 'active-nav' : null} onClick={() => this.handleActiveSpace('whiteboard')}><span className="lnr lnr-file-empty"></span> whiteboard</li>
-            <li className={this.state.activeSpace === 'randomizer' ? 'active-nav' : null} onClick={() => this.handleActiveSpace('randomizer')}><span className="lnr lnr-dice"></span> randomizer</li>
-            <li className={this.state.activeSpace === 'lists' ? 'active-nav' : null} onClick={() => this.handleActiveSpace('lists')}><span className="lnr lnr-list"></span> view all lists</li>
+            <li className={this.state.activeSpace === 'add' ? 'active-nav' : null} onClick={() => this.handleRedirect('add')}><span className="lnr lnr-user"></span> add student</li>
+            <li className={this.state.activeSpace === 'whiteboard' ? 'active-nav' : null} onClick={() => this.handleRedirect('whiteboard')}><span className="lnr lnr-file-empty"></span> whiteboard</li>
+            <li className={this.state.activeSpace === 'randomizer' ? 'active-nav' : null} onClick={() => this.handleRedirect('randomizer')}><span className="lnr lnr-dice"></span> randomizer</li>
+            <li className={this.state.activeSpace === 'lists' ? 'active-nav' : null} onClick={() => this.handleRedirect('lists')}><span className="lnr lnr-list"></span> view all lists</li>
           </ul>
         </div>
         {/* ======== ADD STUDENT ======== */}
@@ -82,6 +83,7 @@ class Workspace extends Component {
               cohortId={id}
               students={students}
               handleStudentState={handleStudentState}
+              handleActiveSpace={this.handleActiveSpace}
               getCohort={getCohort}
             />
           }
@@ -92,6 +94,7 @@ class Workspace extends Component {
           render={props =>
             <Randomizer
               getCohort={getCohort}
+              handleActiveSpace={this.handleActiveSpace}
             />
           }
         />
@@ -101,6 +104,7 @@ class Workspace extends Component {
           render={props =>
             <Lists
               getCohort={getCohort}
+              handleActiveSpace={this.handleActiveSpace}
             />
           }
         />

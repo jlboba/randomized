@@ -137,6 +137,7 @@ class Whiteboard extends Component {
   // LIFE CYCLES
   componentDidMount() {
     this.props.getCohort()
+    this.props.handleActiveSpace('whiteboard')
   }
 
   // RENDER
