@@ -116,7 +116,7 @@ header {
   flex-wrap: wrap;
   margin: 2em auto;
 }
-.cohort-card {
+.cohort-card, .list-card {
   width: 31%;
   height: 4em;
   padding: 10px;
@@ -126,18 +126,18 @@ header {
   box-shadow: 2px 2px white;
   color: white;
 }
-.cohort-card:nth-of-type(odd) {
+.cohort-card:nth-of-type(odd), .list-card:nth-of-type(odd) {
   background: var(--purple);
 }
-.cohort-card:nth-of-type(even) {
+.cohort-card:nth-of-type(even), .list-card:nth-of-type(even) {
   background: var(--blue);
 }
-.cohort-card:hover {
+.cohort-card:hover, .list-card:hover{
   cursor: pointer;
   box-shadow: 2px 2px #ccc;
   background: var(--pink);
 }
-.cohort-card h1 {
+.cohort-card h1, .list-card h1 {
   margin: 0;
   font-family: 'Do Hyeon';
   font-size: 1.2em;
@@ -381,6 +381,23 @@ header {
 }
 .whiteboard-container button:focus {
   outline: 0;
+}
+/* =================
+/ COHORT PAGE LISTS
+================= */
+.list-container {
+  width: 95%;
+  margin: 30px auto;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.list-card {
+  width: 29%;
+}
+.list-card h1 {
+  color: white;
+  font-size: 1em;
 }
 /* =================
 / ADD NEW COHORT

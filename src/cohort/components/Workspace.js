@@ -108,6 +108,7 @@ class Workspace extends Component {
           path="/cohort/:id/lists"
           render={props =>
             <Lists
+              cohortId={id}
               lists={lists}
               getCohort={getCohort}
               handleActiveSpace={this.handleActiveSpace}
