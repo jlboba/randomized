@@ -7,7 +7,8 @@ import { Route } from 'react-router-dom'
 // ==============================
 // IMPORTED COMPONENTS
 // ==============================
-import ListCard from './ListCard.js'
+import ListCard from './ListCard'
+import SingleList from './SingleList'
 
 // ==============================
 // LISTS COMPONENT
@@ -21,7 +22,7 @@ class Lists extends Component {
 
   // RENDER
   render() {
-    const { lists, cohortId } = this.props
+    const { lists, cohortId, getCohort } = this.props
     return (
       <div>
       {/* ======== ALL LISTS ======== */}
@@ -46,9 +47,10 @@ class Lists extends Component {
         <Route
           path="/cohort/:id/lists/:listid"
           render={props=>
-            <div>
-              hi
-            </div>
+            <SingleList
+              cohortId={cohortId}
+              getCohort={getCohort}
+            />
           }
         />
       </div>
