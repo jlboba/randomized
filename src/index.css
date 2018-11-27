@@ -422,13 +422,17 @@ header {
   font-size: 1.2em;
   text-transform: uppercase;
 }
-.delete-list {
+.single-list-header > div {
+  display: flex;
+}
+.delete-list, .convert-list {
   display: flex;
   align-items: center;
   color: #888;
+  font-size: 0.8em;
+  margin: 0px 3px;
 }
-.delete-list:after {
-  content: 'delete list';
+.delete-list:after, .convert-list:after {
   font-family: 'Overpass';
   font-size: 0.7em;
   text-transform: uppercase;
@@ -436,13 +440,27 @@ header {
   margin: 0px 5px;
   transition: 0.3s ease-in-out;
 }
-.delete-list:hover {
+.delete-list:after {
+  content: 'delete list';
+}
+.convert-list:after {
+  content: 'copy list as markdown'
+}
+.delete-list:hover, .convert-list:hover {
   cursor: pointer;
 }
-.delete-list:hover:after {
+.delete-list:hover:after, .convert-list:hover:after {
   display: inline-block;
 }
-
+pre {
+  border-radius: 6px;
+  background: #eee;
+  padding: 10px;
+  box-sizing: border-box;
+  width: 96%;
+  margin: 0 auto 20px auto;
+  font-size: 0.8em;
+}
 /* =================
 / ADD NEW COHORT
 ================= */

@@ -17,7 +17,8 @@ class SingleList extends Component {
   // STATE
   state = {
     listName: null,
-    categories: []
+    categories: [],
+    showMarkdown: false
   }
 
   // HELPER METHODS
@@ -64,6 +65,14 @@ class SingleList extends Component {
       .catch(err => console.log(err))
   }
 
+  toggleMarkdown = () => {
+    this.setState(prevState => {
+      return {
+        showMarkdown: !prevState.showMarkdown
+      }
+    })
+  }
+  
   // AXIOS CALLS
   deleteList = () => {
     axios.delete('https://randomized-api.herokuapp.com/lists/' + this.props.match.params.listid)
@@ -81,9 +90,35 @@ class SingleList extends Component {
 
   // RENDER
   render() {
+    const testing = <span>hi<br/></span>
     return (
       <div className="single-list-container">
-        <div className="single-list-header"><h1>{this.state.listName}</h1> <span className="lnr lnr-trash delete-list" onClick={this.deleteList}></span></div>
+      {/* ======== HEADER ======== */}
+        <div className="single-list-header">
+          <h1>{this.state.listName}</h1>
+          <div>
+            <span className="lnr lnr-trash delete-list" onClick={this.deleteList}></span>
+            <span class="lnr lnr-file-empty convert-list" onClick={this.toggleMarkdown}></span>
+          </div>
+        </div>
+        {/* ======== MARKDOWN CODE ======== */}
+        {this.state.showMarkdown ? <pre>
+          {this.state.categories.map((category, catId) => {
+            return (
+              <div key={catId}>
+                _{category.name}_
+                {category.students.map((student, studId) => {
+                  return (
+                    <div key={studId}>
+                      >{student.nickname}
+                    </div>
+                  )
+                })}
+              </div>
+            )
+          })}
+        </pre>: null}
+        {/* ======== CATEGORIES ======== */}
         <div className="categories-container">
           {this.state.categories.map((category, id) => {
             return (
