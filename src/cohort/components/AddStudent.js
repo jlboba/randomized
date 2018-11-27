@@ -18,6 +18,8 @@ class AddStudent extends Component {
     })
       .then((createdStudent) => {
         this.props.getCohort()
+        this.refs.name.value = null
+        this.refs.nickname.value = null
       })
       .catch(err => console.log(err))
   }

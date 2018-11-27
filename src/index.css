@@ -203,7 +203,7 @@ header {
   margin: 5px auto;
   padding: 5px;
   text-align: center;
-  text-transform: uppercase;
+  text-transform: capitalize;
   font-family: 'Overpass';
   font-weight: 300;
   font-size: 0.7em;
