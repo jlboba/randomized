@@ -185,6 +185,7 @@ class Whiteboard extends Component {
                 name={category}
                 students={students}
                 handleStudentState={handleStudentState}
+                editable={true}
               />
             )
           })}

@@ -27,6 +27,12 @@ class Cohort extends Component {
   // AXIOS CALLS
   // get cohort data
   getCohort = () => {
+    this.getCohortData()
+    this.getCohortLists()
+  }
+
+  // get cohort data
+  getCohortData = () => {
     axios.get('https://randomized-api.herokuapp.com/cohorts/' + this.props.match.params.id)
       .then((foundCohort) => {
         // if there's a found cohort, set the state
@@ -56,7 +62,6 @@ class Cohort extends Component {
       })
       .catch(err => console.log(err))
   }
-
   // get cohort list data
   getCohortLists = () => {
     axios.get('https://randomized-api.herokuapp.com/lists/cohort/' + this.props.match.params.id)
@@ -100,7 +105,7 @@ class Cohort extends Component {
   // LIFE-CYCLES
   componentDidMount() {
     this.getCohort()
-    this.getCohortLists()
+    // this.getCohortLists()
   }
 
   // RENDER
