@@ -9,15 +9,19 @@ import React, { Component } from 'react'
 class Randomizer extends Component {
   // LIFE CYCLES
   componentDidMount() {
-    this.props.getCohort()
-    this.props.handleActiveSpace('randomizer')    
+    this.props.getCohort(true)
+    this.props.handleActiveSpace('randomizer')
   }
 
   // RENDER
   render() {
     return (
       <div>
-        randomizer will go here
+        <div className="randomizer-buttons-container">
+          <button className="randomizer-button">pairs</button>
+          <button className="randomizer-button">threes</button>
+          <button className="randomizer-button">fours</button>
+        </div>
       </div>
     )
   }

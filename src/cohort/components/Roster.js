@@ -22,6 +22,12 @@ class Roster extends Component {
     this.props.handleStudentState(studentName, "roster")
   }
 
+  onClick = (student) => {
+    if(student.inRandomizer) {
+      this.props.handleStudentStateIncluded(student)
+    }
+  }
+
   // RENDER
   render() {
     const { students } = this.props
@@ -38,12 +44,18 @@ class Roster extends Component {
             return (
               <div key={index}>
                 {student.inRoster ?
-                  <div
+                  student.included ? <div
                     className="student"
                     onDragStart={(e) => this.onDragStart(e, student)}
+                    onClick={() => this.onClick(student)}
                     draggable
                   >
                     {student.name}
+                  </div> : <div
+                    className="student"
+                    onClick={() => this.onClick(student)}
+                  >
+                    <s>{student.name}</s>
                   </div>
                 : null}
               </div>

@@ -59,7 +59,7 @@ class Workspace extends Component {
 
   // RENDER
   render() {
-    const { id, getCohort, students, lists, handleStudentState } = this.props
+    const { id, getCohort, students, lists, handleStudentState, handleStudentStateRandomizer } = this.props
 
     return (
       <div className="workspace-container">
@@ -100,6 +100,7 @@ class Workspace extends Component {
             <Randomizer
               getCohort={getCohort}
               handleActiveSpace={this.handleActiveSpace}
+              handleStudentStateRandomizer={handleStudentStateRandomizer}
             />
           }
         />

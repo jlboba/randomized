@@ -26,22 +26,25 @@ class Cohort extends Component {
 
   // AXIOS CALLS
   // get cohort data
-  getCohort = () => {
-    this.getCohortData()
+  getCohort = (inRandomizerSpace) => {
+    this.getCohortData(inRandomizerSpace)
     this.getCohortLists()
   }
 
   // get cohort data
-  getCohortData = () => {
+  getCohortData = (inRandomizerSpace) => {
     axios.get('https://randomized-api.herokuapp.com/cohorts/' + this.props.match.params.id)
       .then((foundCohort) => {
         // if there's a found cohort, set the state
         if(foundCohort.data[0]) {
           // add "inRoster" key to students first for drag & drop functionality
           let newStudents = []
+          let inRandomizer = inRandomizerSpace ? true : false
           foundCohort.data[0].students.forEach((student) => {
             student["inRoster"] = true
             student["category"] = null
+            student["inRandomizer"] = inRandomizer
+            student["included"] = true
             newStudents.push(student)
           })
           // set state
@@ -102,6 +105,21 @@ class Cohort extends Component {
     })
   }
 
+  handleStudentStateIncluded = (handledStudent) => {
+    let updatedStudents = []
+    this.state.students.forEach((student) => {
+      if(student.id === handledStudent.id) {
+        student.included = !student.included
+      }
+      updatedStudents.push(student)
+    })
+    this.setState(prevState => {
+      return {
+        students: updatedStudents
+      }
+    })
+  }
+
   // LIFE-CYCLES
   componentDidMount() {
     this.getCohort()
@@ -118,12 +136,14 @@ class Cohort extends Component {
             <Roster
               students={this.state.students}
               handleStudentState={this.handleStudentState}
+              handleStudentStateIncluded={this.handleStudentStateIncluded}
             />
             <Workspace
               id={this.props.match.params.id}
               students={this.state.students}
               lists={this.state.lists}
               handleStudentState={this.handleStudentState}
+              handleStudentStateIncluded={this.handleStudentStateIncluded}
               getCohort={this.getCohort}
             />
           </div> : ''

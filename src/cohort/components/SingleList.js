@@ -72,7 +72,7 @@ class SingleList extends Component {
       }
     })
   }
-  
+
   // AXIOS CALLS
   deleteList = () => {
     axios.delete('https://randomized-api.herokuapp.com/lists/' + this.props.match.params.listid)
@@ -90,7 +90,6 @@ class SingleList extends Component {
 
   // RENDER
   render() {
-    const testing = <span>hi<br/></span>
     return (
       <div className="single-list-container">
       {/* ======== HEADER ======== */}
