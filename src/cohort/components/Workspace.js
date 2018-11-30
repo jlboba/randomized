@@ -98,6 +98,7 @@ class Workspace extends Component {
           path="/cohort/:id/randomizer"
           render={props =>
             <Randomizer
+              students={students}
               getCohort={getCohort}
               handleActiveSpace={this.handleActiveSpace}
               handleStudentStateRandomizer={handleStudentStateRandomizer}
