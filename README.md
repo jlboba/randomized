@@ -16,7 +16,7 @@ Student randomizer/cohort manager app ([livesite](https://randomizd.herokuapp.co
       - Users are able to temporarily cross out a student so that they're not included in the randomized groups
   1. Users are able to save groups as lists (both customized and randomized)
   1. Users are able to see all saved lists for a cohort
-    - Users are able to copy the lists as markdown
+      - Users are able to copy the lists as markdown
   1. Users are able to delete lists  
 
 #### In Progress
