@@ -4,12 +4,36 @@
 import React, { Component } from 'react'
 
 // ==============================
+// IMPORTED COMPONENTS
+// ==============================
+import RandomCategory from './RandomCategory'
+
+// ==============================
 // RANDOMIZER COMPONENT
 // ==============================
 class Randomizer extends Component {
   // STATE
   state = {
-    groupedStudents: []
+    categories: [],
+    students: []
+  }
+
+  // HANDLER METHODS
+  handleStudentState = (handledStudent, category) => {
+    let updatedStudents = []
+    this.state.students.forEach((student) => {
+      if(student.name === handledStudent) {
+          student.category = category
+          updatedStudents.push(student)
+      } else {
+        updatedStudents.push(student)
+      }
+    })
+    this.setState(prevState => {
+      return {
+        students: updatedStudents
+      }
+    })
   }
 
   // HELPER METHODS
@@ -43,9 +67,26 @@ class Randomizer extends Component {
         groupedStudents.splice(index)
       }
     })
+    this.categorizeStudents(groupedStudents)
+  }
+
+  categorizeStudents = (groupedStudents) => {
+    let categories = []
+    let students = []
+    groupedStudents.forEach((group, index) => {
+      let categoryName = 'group-' + (index+1)
+      group.forEach((student) => {
+        student.category = categoryName
+        students.push(student)
+      })
+      categories.push({
+        name: categoryName
+      })
+    })
     this.setState(prevState => {
       return {
-        groupedStudents: groupedStudents
+        categories: categories,
+        students: students
       }
     })
   }
@@ -64,6 +105,18 @@ class Randomizer extends Component {
           <button className="randomizer-button" onClick={() => this.shuffleArray(2)}>pairs</button>
           <button className="randomizer-button" onClick={() => this.shuffleArray(3)}>threes</button>
           <button className="randomizer-button" onClick={() => this.shuffleArray(4)}>fours</button>
+        </div>
+        <div className="randomized-groups-container">
+          {this.state.categories.map((category, index) => {
+            return (
+              <RandomCategory
+                key={index}
+                name={category.name}
+                students={this.state.students}
+                handleStudentState={this.handleStudentState}
+              />
+            )
+          })}
         </div>
       </div>
     )

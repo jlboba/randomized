@@ -27,6 +27,7 @@ class Category extends Component {
 
   // LIFE CYCLES
   componentDidMount() {
+    console.log(this.props.students);
     if(!this.props.editable) {
       this.setState(prevState => {
         return {
