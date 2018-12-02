@@ -12,8 +12,8 @@ Student randomizer/cohort manager app ([livesite](https://randomizd.herokuapp.co
   1. Users are able to add students to a cohort
   1. Users are able to customize groups
   1. Users are able to randomize groups in pairs, threes, or fours
-    - Users are able to reorganize students within the randomized groups
-    - Users are able to temporarily cross out a student so that they're not included in the randomized groups
+      - Users are able to reorganize students within the randomized groups
+      - Users are able to temporarily cross out a student so that they're not included in the randomized groups
   1. Users are able to save groups as lists (both customized and randomized)
   1. Users are able to see all saved lists for a cohort
     - Users are able to copy the lists as markdown
