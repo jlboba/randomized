@@ -106,7 +106,7 @@ class Randomizer extends Component {
           <button className="randomizer-button" onClick={() => this.shuffleArray(3)}>threes</button>
           <button className="randomizer-button" onClick={() => this.shuffleArray(4)}>fours</button>
         </div>
-        <div className="randomized-groups-container">
+        <div className="categories-container">
           {this.state.categories.map((category, index) => {
             return (
               <RandomCategory

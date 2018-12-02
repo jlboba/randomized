@@ -277,7 +277,7 @@ header {
 .form-container form {
   margin: 10px 0;
 }
-.form-container input, .add-cohort-container input {
+.form-container input, .add-cohort-container input, .randomizer-button {
   width: 100%;
   margin: 5px 0;
   padding: 10px;
@@ -296,7 +296,7 @@ header {
   text-transform: uppercase;
   color: #999;
 }
-.form-container input[type="submit"], .whiteboard-container input[type="submit"], .whiteboard-container button, .add-cohort-container input[type="submit"] {
+.form-container input[type="submit"], .whiteboard-container input[type="submit"], .whiteboard-container button, .add-cohort-container input[type="submit"], .randomizer-button {
   border: 0px;
   background: rgb(241, 189, 212);
   color: white;
@@ -305,7 +305,7 @@ header {
   text-transform: uppercase;
   letter-spacing: 4px;
 }
-.form-container input[type="submit"]:hover, .whiteboard-container input[type="submit"]:hover, .whiteboard-container button, .add-cohort-container input[type="submit"]:hover {
+.form-container input[type="submit"]:hover, .whiteboard-container input[type="submit"]:hover, .whiteboard-container button, .add-cohort-container input[type="submit"]:hover, .randomizer-button:hover {
   cursor: pointer;
   background: var(--gradient);
   box-shadow: 1px 1px #ccc;
@@ -460,6 +460,22 @@ pre {
   width: 96%;
   margin: 0 auto 20px auto;
   font-size: 0.8em;
+}
+
+/* =================
+/ COHORT PAGE RANDOM
+================= */
+.randomizer-buttons-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+.randomizer-button {
+  padding: 10px;
+  margin: 0px 10px;
+}
+.randomizer-button:focus {
+  outline: 0;
 }
 
 /* =================
