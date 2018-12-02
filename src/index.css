@@ -285,18 +285,18 @@ header {
   border: 1px solid #eee;
   border-radius: 6px;
 }
-.form-container input:focus, .whiteboard-container input:focus, .add-cohort-container input:focus {
+.form-container input:focus, .whiteboard-container input:focus, .add-cohort-container input:focus, .list-form input:focus {
   border: 1px solid var(--purple);
   outline: 0;
 }
-.form-container input::placeholder, .whiteboard-container input::placeholder, .add-cohort-container input::placeholder {
+.form-container input::placeholder, .whiteboard-container input::placeholder, .add-cohort-container input::placeholder, .list-form input::placeholder {
   font-family: 'Overpass';
   font-size: 0.9em;
   font-weight: 300;
   text-transform: uppercase;
   color: #999;
 }
-.form-container input[type="submit"], .whiteboard-container input[type="submit"], .whiteboard-container button, .add-cohort-container input[type="submit"], .randomizer-button {
+.form-container input[type="submit"], .whiteboard-container input[type="submit"], .whiteboard-container button, .list-toggle, .add-cohort-container input[type="submit"], .randomizer-button, .list-form input[type="submit"]{
   border: 0px;
   background: rgb(241, 189, 212);
   color: white;
@@ -305,7 +305,7 @@ header {
   text-transform: uppercase;
   letter-spacing: 4px;
 }
-.form-container input[type="submit"]:hover, .whiteboard-container input[type="submit"]:hover, .whiteboard-container button, .add-cohort-container input[type="submit"]:hover, .randomizer-button:hover {
+.form-container input[type="submit"]:hover, .whiteboard-container input[type="submit"]:hover, .whiteboard-container button, .list-toggle, .add-cohort-container input[type="submit"]:hover, .randomizer-button:hover, .list-form input[type="submit"]:hover {
   cursor: pointer;
   background: var(--gradient);
   box-shadow: 1px 1px #ccc;
@@ -324,19 +324,19 @@ header {
   border-image-slice: 1;
   border-width: 1px
 }
-.whiteboard-container form {
+.whiteboard-container form, .randomizer-container form {
   width: 100%;
   margin: 10px 0;
   text-align: center;
 }
-.whiteboard-container input {
+.whiteboard-container input, .list-form input{
   width: 70%;
   padding: 10px;
   box-sizing: border-box;
   border: 1px solid #eee;
   border-radius: 6px;
 }
-.whiteboard-container input[type="submit"] {
+.whiteboard-container input[type="submit"], .list-form input[type="submit"] {
   width: 25%;
   margin-left: 5px;
   font-size: 0.7em;
@@ -368,7 +368,7 @@ header {
   padding-bottom: 2px;
   border-bottom: 1px solid #eee;
 }
-.whiteboard-container button {
+.whiteboard-container button, .list-toggle {
   display: block;
   margin: 0 auto;
   width: 95%;
@@ -377,11 +377,12 @@ header {
   border-radius: 6px;
   box-shadow: 0px 0px transparent;
 }
-.whiteboard-container button:hover {
+.whiteboard-container button:hover, .list-toggle:hover {
+  cursor: pointer;
   box-shadow: 1px 1px #ccc;
   background: var(--blue);
 }
-.whiteboard-container button:focus {
+.whiteboard-container button:focus, .list-toggle {
   outline: 0;
 }
 
