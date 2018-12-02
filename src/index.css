@@ -469,7 +469,7 @@ pre {
 .randomizer-buttons-container {
   display: flex;
   justify-content: center;
-  margin: 30px 0;
+  margin: 30px 0 20px 0;
 }
 .randomizer-button {
   padding: 10px;
